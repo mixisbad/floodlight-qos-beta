@@ -36,18 +36,32 @@ print brdgs
 
 switches = []
 for bn in brdgs:
-        sw =  p[(bn+8):(bn+10)]
-        switches.append(sw)
+    first_quote = bn+6
+    while p[first_quote] != '"':
+        first_quote = first_quote+1
+    first_quote = first_quote+1
+    second_quote = first_quote+1
+    while p[second_quote] != '"':
+        second_quote = second_quote+1
+    sw =  p[first_quote:second_quote]
+    switches.append(sw)
 
 ports = find_all(p,"Port")
 print ports
 
 prts = []
 for prt in ports:
-        prt = p[(prt+6):(prt+13)]
-        if '"' not in prt:
-                print prt
-                prts.append(prt)
+    first_quote = prt+5
+    while p[first_quote] != '"':
+        first_quote = first_quote+1
+    first_quote = first_quote+1
+    second_quote = first_quote+1
+    while p[second_quote] != '"':
+        second_quote = second_quote+1
+    prt =  p[first_quote:second_quote]
+    if '-' in prt:
+        print prt
+        prts.append(prt)
 config_strings = {}
 for i in range(len(switches)):
         str = ""
