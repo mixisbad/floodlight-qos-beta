@@ -68,7 +68,7 @@ for i in range(len(switches)):
         sw = switches[i]
         for n in range(len(prts)):
                 #verify correct order
-                if switches[i] in prts[n]:
+                if switches[i] == prts[n][0:prts[n].find("-")]:
                         #print switches[i]
                         #print prts[n]
                         port_name = prts[n]
